@@ -1,0 +1,928 @@
+{
+  "Uuid": "7c58290b-d77c-4736-b231-53fb0bf45fb6",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "03_Filtros a Otras Vistas",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "DSRevitNodesUI.Views, DSRevitNodesUI",
+      "SelectedIndex": 25,
+      "SelectedString": "BIM360",
+      "NodeType": "ExtensionNode",
+      "Id": "259726c8e5eb40bb9306d3e6b0e37ebd",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "aa73015115cf4276933ed8d2a74f6a45",
+          "Name": "Views",
+          "Description": "Views seleccionado",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Todas las vistas disponibles del documento actual"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "archilab.Revit.Views.Views.GetByType@string",
+      "Id": "f4e99a012b9f48e9823c436514518dec",
+      "Inputs": [
+        {
+          "Id": "92a93ed7cc334665bd79aa7d497cf676",
+          "Name": "viewType",
+          "Description": "View type to retrieve all views for. If View Template selected, 3D View Templates will be excluded from returned View Templates (currently a Dynamo limitation).\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5ec0bd8c821946a1af4f318359e09b98",
+          "Name": "view",
+          "Description": "Views that match view type.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get all views by type.\n\nViews.GetByType (viewType: string): Element[]"
+    },
+    {
+      "ConcreteType": "archilabUI.ViewTypesUi, archilabUI",
+      "SelectedIndex": 24,
+      "SelectedString": "View Template",
+      "NodeType": "ExtensionNode",
+      "Id": "7341fd0e5214433a8e3f355e372ab337",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "0b8fef0afae644a88563716f2d6d2b9a",
+          "Name": "viewType",
+          "Description": "The selected viewType",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Retrieve all available View Types."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "c4afe98d-f31b-4403-9b58-857b78012b9c",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "d87b7c5c61e04a9f8e0010849cfb7b1c",
+      "Inputs": [
+        {
+          "Id": "1e20fda228c049b3af57deeeb52f7d8a",
+          "Name": "sourceView",
+          "Description": "The view that has the filters\n\nView",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6fea5b65a4f74aa193239e1b9e7bff27",
+          "Name": "targetViews",
+          "Description": "Views to apply filters\n\nView[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "223670dacde344769c944195c4140554",
+          "Name": "views",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Copy all the filters in a view and their graphics to other view(s)."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "archilab.Revit.Views.Views.GetByType@string",
+      "Id": "0576e589d3234b2499e5af04d0ea4a04",
+      "Inputs": [
+        {
+          "Id": "89c8c81054334db3a1aa8d0ccaef8b45",
+          "Name": "viewType",
+          "Description": "View type to retrieve all views for. If View Template selected, 3D View Templates will be excluded from returned View Templates (currently a Dynamo limitation).\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "139805f234714f4894bd9bd7bc399eb4",
+          "Name": "view",
+          "Description": "Views that match view type.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get all views by type.\n\nViews.GetByType (viewType: string): Element[]"
+    },
+    {
+      "ConcreteType": "archilabUI.ViewTypesUi, archilabUI",
+      "SelectedIndex": 22,
+      "SelectedString": "ThreeD",
+      "NodeType": "ExtensionNode",
+      "Id": "6b91a5311059487fb7801b5a51587025",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2bf93b32405d43c5941d8f6527587e71",
+          "Name": "viewType",
+          "Description": "The selected viewType",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Retrieve all available View Types."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "archilab.Revit.Views.Views.GetByType@string",
+      "Id": "6c4c71d74900407ebaf5d4dc20de2174",
+      "Inputs": [
+        {
+          "Id": "5ea6e5b5a33d45b38c1ebcbc904a59a6",
+          "Name": "viewType",
+          "Description": "View type to retrieve all views for. If View Template selected, 3D View Templates will be excluded from returned View Templates (currently a Dynamo limitation).\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7c0737225ec5491ab20dac1a168a9458",
+          "Name": "view",
+          "Description": "Views that match view type.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get all views by type.\n\nViews.GetByType (viewType: string): Element[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "archilab.Revit.Views.Views.GetByType@string",
+      "Id": "11f7a0816cdc434991218249aa6212f6",
+      "Inputs": [
+        {
+          "Id": "967f6d20107f482cb37985fb121939a8",
+          "Name": "viewType",
+          "Description": "View type to retrieve all views for. If View Template selected, 3D View Templates will be excluded from returned View Templates (currently a Dynamo limitation).\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f24e95a2604e4985927e0bb5d4f9a203",
+          "Name": "view",
+          "Description": "Views that match view type.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get all views by type.\n\nViews.GetByType (viewType: string): Element[]"
+    },
+    {
+      "ConcreteType": "archilabUI.ViewTypesUi, archilabUI",
+      "SelectedIndex": 19,
+      "SelectedString": "Section",
+      "NodeType": "ExtensionNode",
+      "Id": "c736e73501c44772ad8c5f16eba3b5c5",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2e077751d2f149cb8ff5883c5e0f4a21",
+          "Name": "viewType",
+          "Description": "The selected viewType",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Retrieve all available View Types."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "archilab.Revit.Views.Views.GetByType@string",
+      "Id": "fa412dc4452a4172ae5c2b0987c175eb",
+      "Inputs": [
+        {
+          "Id": "2ef17a40622b40f19086721b87daa801",
+          "Name": "viewType",
+          "Description": "View type to retrieve all views for. If View Template selected, 3D View Templates will be excluded from returned View Templates (currently a Dynamo limitation).\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cef7465b50bf4bb082893031a248cc29",
+          "Name": "view",
+          "Description": "Views that match view type.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get all views by type.\n\nViews.GetByType (viewType: string): Element[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "archilab.Revit.Views.Views.GetByType@string",
+      "Id": "91409a3b004f4e0a9142cbb8ccc283cb",
+      "Inputs": [
+        {
+          "Id": "59ad4e8923604d5fa7142da4fd6f8ee7",
+          "Name": "viewType",
+          "Description": "View type to retrieve all views for. If View Template selected, 3D View Templates will be excluded from returned View Templates (currently a Dynamo limitation).\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cf3add2d109b412e93498751007c2e39",
+          "Name": "view",
+          "Description": "Views that match view type.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get all views by type.\n\nViews.GetByType (viewType: string): Element[]"
+    },
+    {
+      "ConcreteType": "archilabUI.ViewTypesUi, archilabUI",
+      "SelectedIndex": 9,
+      "SelectedString": "FloorPlan",
+      "NodeType": "ExtensionNode",
+      "Id": "1fb2ab9031494cbd9344a22fd647d1c1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "167c0d46b18046a897562067d76c9027",
+          "Name": "viewType",
+          "Description": "The selected viewType",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Retrieve all available View Types."
+    },
+    {
+      "ConcreteType": "archilabUI.ViewTypesUi, archilabUI",
+      "SelectedIndex": 7,
+      "SelectedString": "Elevation",
+      "NodeType": "ExtensionNode",
+      "Id": "bd143f94f64c45a8bcbb1b0c381af0c5",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b5175837b1e04b969333475ec5c5ca72",
+          "Name": "viewType",
+          "Description": "The selected viewType",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Retrieve all available View Types."
+    },
+    {
+      "ConcreteType": "archilabUI.ViewTypesUi, archilabUI",
+      "SelectedIndex": 1,
+      "SelectedString": "CeilingPlan",
+      "NodeType": "ExtensionNode",
+      "Id": "412d762ede8945abb6badf5a15f547fa",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8985303868ae42c182cc07fcb29cac87",
+          "Name": "viewType",
+          "Description": "The selected viewType",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Retrieve all available View Types."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "c4afe98d-f31b-4403-9b58-857b78012b9c",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "c949a6dabc24463c88c7106dadeffdbe",
+      "Inputs": [
+        {
+          "Id": "de2ff62d34554e498550b909941930f0",
+          "Name": "sourceView",
+          "Description": "The view that has the filters\n\nView",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a49e860e0e9247d79ddf1d13cbae59ba",
+          "Name": "targetViews",
+          "Description": "Views to apply filters\n\nView[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "eb1f15c012bd45d895009aab3efad14c",
+          "Name": "views",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Copy all the filters in a view and their graphics to other view(s)."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "c4afe98d-f31b-4403-9b58-857b78012b9c",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "b6ebae2a22bf4d1e8f45bcb074d6c673",
+      "Inputs": [
+        {
+          "Id": "22d44c26239f4a4d90e255d0676a40c7",
+          "Name": "sourceView",
+          "Description": "The view that has the filters\n\nView",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f547bbd824944cdaa3c61f094726b61a",
+          "Name": "targetViews",
+          "Description": "Views to apply filters\n\nView[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e594195e8eaf4148892e04913ceec10b",
+          "Name": "views",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Copy all the filters in a view and their graphics to other view(s)."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "c4afe98d-f31b-4403-9b58-857b78012b9c",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "c5573cd9f6fe4984b958af95c1517729",
+      "Inputs": [
+        {
+          "Id": "f32f7d691b024224b2fdb72963d8e91f",
+          "Name": "sourceView",
+          "Description": "The view that has the filters\n\nView",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fafa476cac5241ed89c63e5b801696d1",
+          "Name": "targetViews",
+          "Description": "Views to apply filters\n\nView[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "974c6cd4659c4a9692f9916e2a24a488",
+          "Name": "views",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Copy all the filters in a view and their graphics to other view(s)."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "c4afe98d-f31b-4403-9b58-857b78012b9c",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "059e4b87aa23408dbeee8e6d37000fef",
+      "Inputs": [
+        {
+          "Id": "22e37f7c3b6142e18f288a62425300c5",
+          "Name": "sourceView",
+          "Description": "The view that has the filters\n\nView",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9d9f4befe16a4520a0209b9a504e4045",
+          "Name": "targetViews",
+          "Description": "Views to apply filters\n\nView[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d7fad45680f14767a2683a159f55dc51",
+          "Name": "views",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Copy all the filters in a view and their graphics to other view(s)."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "c4afe98d-f31b-4403-9b58-857b78012b9c",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "334da5cc7a694aad8e69fa169c151f7e",
+      "Inputs": [
+        {
+          "Id": "faf18403aee444a7a3c31d1ceff88984",
+          "Name": "sourceView",
+          "Description": "The view that has the filters\n\nView",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4474dbdf74894b3f81a1282728428b83",
+          "Name": "targetViews",
+          "Description": "Views to apply filters\n\nView[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0933b12d03984d3daba28513751658b0",
+          "Name": "views",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Copy all the filters in a view and their graphics to other view(s)."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "aa73015115cf4276933ed8d2a74f6a45",
+      "End": "1e20fda228c049b3af57deeeb52f7d8a",
+      "Id": "02ebfecec14848e782df2c1ddcb44cab"
+    },
+    {
+      "Start": "aa73015115cf4276933ed8d2a74f6a45",
+      "End": "de2ff62d34554e498550b909941930f0",
+      "Id": "a97d1ebae2b24dfb88372c9ab2307a9b"
+    },
+    {
+      "Start": "aa73015115cf4276933ed8d2a74f6a45",
+      "End": "22d44c26239f4a4d90e255d0676a40c7",
+      "Id": "349d5d3bc3fd4a76bcdc1bf3d98e1b02"
+    },
+    {
+      "Start": "aa73015115cf4276933ed8d2a74f6a45",
+      "End": "f32f7d691b024224b2fdb72963d8e91f",
+      "Id": "8599af021b2247309a16c809a049e689"
+    },
+    {
+      "Start": "aa73015115cf4276933ed8d2a74f6a45",
+      "End": "22e37f7c3b6142e18f288a62425300c5",
+      "Id": "03ae07b189874953b56c3f9ff562d49b"
+    },
+    {
+      "Start": "aa73015115cf4276933ed8d2a74f6a45",
+      "End": "faf18403aee444a7a3c31d1ceff88984",
+      "Id": "4892be79aa5c4a08967d9735d5ce5679"
+    },
+    {
+      "Start": "5ec0bd8c821946a1af4f318359e09b98",
+      "End": "6fea5b65a4f74aa193239e1b9e7bff27",
+      "Id": "60c994c3225a4cccb3cf44fa6c0c9352"
+    },
+    {
+      "Start": "0b8fef0afae644a88563716f2d6d2b9a",
+      "End": "92a93ed7cc334665bd79aa7d497cf676",
+      "Id": "ee88daf2ad90414db9d972a00b5826ce"
+    },
+    {
+      "Start": "139805f234714f4894bd9bd7bc399eb4",
+      "End": "4474dbdf74894b3f81a1282728428b83",
+      "Id": "c702cd7d7ff64504abf2b37adafc68e5"
+    },
+    {
+      "Start": "2bf93b32405d43c5941d8f6527587e71",
+      "End": "89c8c81054334db3a1aa8d0ccaef8b45",
+      "Id": "a40139cb73b64267bad306d6d49e30be"
+    },
+    {
+      "Start": "7c0737225ec5491ab20dac1a168a9458",
+      "End": "a49e860e0e9247d79ddf1d13cbae59ba",
+      "Id": "cc0b400d4ed548879e3bf13be5e7a204"
+    },
+    {
+      "Start": "f24e95a2604e4985927e0bb5d4f9a203",
+      "End": "9d9f4befe16a4520a0209b9a504e4045",
+      "Id": "f0f85891a8594886a7df04d92a7a8b82"
+    },
+    {
+      "Start": "2e077751d2f149cb8ff5883c5e0f4a21",
+      "End": "967f6d20107f482cb37985fb121939a8",
+      "Id": "e98d11f851264708b608d54e939237d0"
+    },
+    {
+      "Start": "cef7465b50bf4bb082893031a248cc29",
+      "End": "fafa476cac5241ed89c63e5b801696d1",
+      "Id": "f16c5e131a3745fb99aa34f3a2624058"
+    },
+    {
+      "Start": "cf3add2d109b412e93498751007c2e39",
+      "End": "f547bbd824944cdaa3c61f094726b61a",
+      "Id": "de77c8733872412b818b7841ca5d322c"
+    },
+    {
+      "Start": "167c0d46b18046a897562067d76c9027",
+      "End": "2ef17a40622b40f19086721b87daa801",
+      "Id": "0ae935db3fda47219bca1910614e84b7"
+    },
+    {
+      "Start": "b5175837b1e04b969333475ec5c5ca72",
+      "End": "59ad4e8923604d5fa7142da4fd6f8ee7",
+      "Id": "3d675456b71f4a80b98c0139f83715c8"
+    },
+    {
+      "Start": "8985303868ae42c182cc07fcb29cac87",
+      "End": "5ea6e5b5a33d45b38c1ebcbc904a59a6",
+      "Id": "e3a31b5cda9f457cac1226d28fd92a22"
+    }
+  ],
+  "Dependencies": [
+    "c4afe98d-f31b-4403-9b58-857b78012b9c"
+  ],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "archi-lab.net",
+      "Version": "2020.23.13",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "f4e99a012b9f48e9823c436514518dec",
+        "7341fd0e5214433a8e3f355e372ab337",
+        "0576e589d3234b2499e5af04d0ea4a04",
+        "6b91a5311059487fb7801b5a51587025",
+        "6c4c71d74900407ebaf5d4dc20de2174",
+        "11f7a0816cdc434991218249aa6212f6",
+        "c736e73501c44772ad8c5f16eba3b5c5",
+        "fa412dc4452a4172ae5c2b0987c175eb",
+        "91409a3b004f4e0a9142cbb8ccc283cb",
+        "1fb2ab9031494cbd9344a22fd647d1c1",
+        "bd143f94f64c45a8bcbb1b0c381af0c5",
+        "412d762ede8945abb6badf5a15f547fa"
+      ]
+    },
+    {
+      "Name": "Modelical",
+      "Version": "2.2.19",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "d87b7c5c61e04a9f8e0010849cfb7b1c",
+        "c949a6dabc24463c88c7106dadeffdbe",
+        "b6ebae2a22bf4d1e8f45bcb074d6c673",
+        "c5573cd9f6fe4984b958af95c1517729",
+        "059e4b87aa23408dbeee8e6d37000fef",
+        "334da5cc7a694aad8e69fa169c151f7e"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.3.0.5885",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "259726c8e5eb40bb9306d3e6b0e37ebd",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "Vista que toma todos los Filtros",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -774.15251867822667,
+        "Y": -336.59476838580315
+      },
+      {
+        "Id": "f4e99a012b9f48e9823c436514518dec",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Views.GetByType",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1136.8845462684149,
+        "Y": 188.59197969911716
+      },
+      {
+        "Id": "7341fd0e5214433a8e3f355e372ab337",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Tipo de vista",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1465.9513752555949,
+        "Y": 170.99465001201418
+      },
+      {
+        "Id": "d87b7c5c61e04a9f8e0010849cfb7b1c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "CopyAllFilters",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -289.84537352782615,
+        "Y": -156.59183695715762
+      },
+      {
+        "Id": "0576e589d3234b2499e5af04d0ea4a04",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Views.GetByType",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1135.8734629439446,
+        "Y": 698.98620566292448
+      },
+      {
+        "Id": "6b91a5311059487fb7801b5a51587025",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "View Type",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1464.9402919311244,
+        "Y": 681.38887597582141
+      },
+      {
+        "Id": "6c4c71d74900407ebaf5d4dc20de2174",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Views.GetByType",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1134.4245437785521,
+        "Y": 298.55102761417004
+      },
+      {
+        "Id": "11f7a0816cdc434991218249aa6212f6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Views.GetByType",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1137.5000423639653,
+        "Y": 592.93019433817813
+      },
+      {
+        "Id": "c736e73501c44772ad8c5f16eba3b5c5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "View Type",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1466.5668713511454,
+        "Y": 575.33286465107517
+      },
+      {
+        "Id": "fa412dc4452a4172ae5c2b0987c175eb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Views.GetByType",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1137.954087033004,
+        "Y": 494.68115716810689
+      },
+      {
+        "Id": "91409a3b004f4e0a9142cbb8ccc283cb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Views.GetByType",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1153.07301525204,
+        "Y": 395.648741854741
+      },
+      {
+        "Id": "1fb2ab9031494cbd9344a22fd647d1c1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "View Type",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1467.0209160201841,
+        "Y": 477.08382748100394
+      },
+      {
+        "Id": "bd143f94f64c45a8bcbb1b0c381af0c5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "View Type",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1429.01379426007,
+        "Y": 376.44153186524
+      },
+      {
+        "Id": "412d762ede8945abb6badf5a15f547fa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "View Type",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1463.4913727657322,
+        "Y": 280.95369792706697
+      },
+      {
+        "Id": "c949a6dabc24463c88c7106dadeffdbe",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "CopyAllFilters",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -297.32031515851975,
+        "Y": 189.74712526497717
+      },
+      {
+        "Id": "b6ebae2a22bf4d1e8f45bcb074d6c673",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "CopyAllFilters",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -297.32031515851975,
+        "Y": 468.81161281087009
+      },
+      {
+        "Id": "c5573cd9f6fe4984b958af95c1517729",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "CopyAllFilters",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -299.81196236875064,
+        "Y": 757.84268919768783
+      },
+      {
+        "Id": "059e4b87aa23408dbeee8e6d37000fef",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "CopyAllFilters",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -307.28690399944423,
+        "Y": 1024.4489406924245
+      },
+      {
+        "Id": "334da5cc7a694aad8e69fa169c151f7e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "CopyAllFilters",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -294.8286679482884,
+        "Y": 1201.3558926188389
+      }
+    ],
+    "Annotations": [],
+    "X": 761.40821558679738,
+    "Y": 252.81939669664982,
+    "Zoom": 0.31082568811760153
+  }
+}

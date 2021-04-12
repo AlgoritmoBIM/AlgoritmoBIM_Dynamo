@@ -1,0 +1,329 @@
+{
+  "Uuid": "2f7dc879-b916-4929-afd2-c29202ea921f",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "01_Worksets a un Parametro",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "628dacbb27e44a0187af8883efcccf6c",
+      "Name": "Parametro a donde colocar Workset",
+      "Type": "string",
+      "Value": "ZZ_SISTEMAS",
+      "Description": "Creates a string."
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "35d5bbd0-79d7-43a9-af54-2b366d290d4a",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "563a7a130a8346b18e3d527c46bda9f8",
+      "Inputs": [
+        {
+          "Id": "5b700e3e39c54762b4b2257c9372926c",
+          "Name": "element",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "08f1b0e8be204c5d9b01767ae1983f8e",
+          "Name": "workset",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Retrieves the workset of a given element"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\nclr.AddReference('RevitAPI')\r\nfrom Autodesk.Revit.DB import*\r\n\r\nif isinstance(IN[0],list):\r\n\tOUT = [i.Name for i in IN[0]]\r\nelse:\r\n\tOUT = IN[0].Name",
+      "VariableInputPorts": true,
+      "Id": "8afca37df5324fcf8371c1c126edf55d",
+      "Inputs": [
+        {
+          "Id": "27c51bfc70e54d5fae542c44acd6a9a4",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "923c14c78f6242ec88735bf04dc6d156",
+          "Name": "OUT",
+          "Description": "Resultado de la secuencia de comandos de Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ejecuta una secuencia de comandos de IronPython incrustada"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.SetParameterByName@string,var",
+      "Id": "7f4d8ac69c2947f3b8a8b8c981800b5e",
+      "Inputs": [
+        {
+          "Id": "de5c7421cb004bf5b3981fcaaefbbb21",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "50468988e9b44c13971fe0382e2cb64b",
+          "Name": "parameterName",
+          "Description": "The name of the parameter to set.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dbb69642c4ef442ebc2c60ccd6a227df",
+          "Name": "value",
+          "Description": "The value.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "80caaae4d34d416cba9b74a45446bd7c",
+          "Name": "Element",
+          "Description": "Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Set one of the element's parameters.\n\nElement.SetParameterByName (parameterName: string, value: var): Element"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsInView, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "dc5a5a041b71491baadd7a0b9c261567",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c2d61e2a4d0642edaa94022b00a4cbd9",
+          "Name": "elements",
+          "Description": "Todos los elementos visibles en la vista activa",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Obtiene todos los elementos que están visibles en la vista activa"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "ZZ_SISTEMAS",
+      "Id": "628dacbb27e44a0187af8883efcccf6c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "7c6c3da1c4ba466cac9c16c2f93050d3",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "Dynamo revit 2.3.0.8352\nclockwork 2.3.0;",
+      "Id": "3216729c66ae4340af681d78f4d6d6fe",
+      "Inputs": [
+        {
+          "Id": "8d2c209b2f1b436eb3fbf117f9b16229",
+          "Name": "clockwork",
+          "Description": "clockwork",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "afb4100dd0e040379f745ddbba68243d",
+          "Name": "",
+          "Description": "Value of expression at line 0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "08f1b0e8be204c5d9b01767ae1983f8e",
+      "End": "27c51bfc70e54d5fae542c44acd6a9a4",
+      "Id": "291f2eb8ada1465a9cf687e3a00dc631"
+    },
+    {
+      "Start": "923c14c78f6242ec88735bf04dc6d156",
+      "End": "dbb69642c4ef442ebc2c60ccd6a227df",
+      "Id": "4155bf228fb54c9abc456c65d974bbda"
+    },
+    {
+      "Start": "c2d61e2a4d0642edaa94022b00a4cbd9",
+      "End": "5b700e3e39c54762b4b2257c9372926c",
+      "Id": "bc84e7f972be49089eadc2af26e2e0b9"
+    },
+    {
+      "Start": "c2d61e2a4d0642edaa94022b00a4cbd9",
+      "End": "de5c7421cb004bf5b3981fcaaefbbb21",
+      "Id": "e3f60f845ba247448d39526ff5b23d50"
+    },
+    {
+      "Start": "7c6c3da1c4ba466cac9c16c2f93050d3",
+      "End": "50468988e9b44c13971fe0382e2cb64b",
+      "Id": "04299b93f0174251bee503cb11378369"
+    }
+  ],
+  "Dependencies": [
+    "35d5bbd0-79d7-43a9-af54-2b366d290d4a"
+  ],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Clockwork for Dynamo 2.x",
+      "Version": "2.3.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "563a7a130a8346b18e3d527c46bda9f8"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.3.0.5885",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Element.Workset",
+        "Id": "563a7a130a8346b18e3d527c46bda9f8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 257.84840593925946,
+        "Y": 263.39150770772443
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "8afca37df5324fcf8371c1c126edf55d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 525.67690614722733,
+        "Y": 321.58276352194139
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Element.SetParameterByName",
+        "Id": "7f4d8ac69c2947f3b8a8b8c981800b5e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 866.5626820600537,
+        "Y": 262.88336513272736
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "All Elements In Active View",
+        "Id": "dc5a5a041b71491baadd7a0b9c261567",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 42.612353952637704,
+        "Y": 265.19541136838063
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Parametro a donde colocar Workset",
+        "Id": "628dacbb27e44a0187af8883efcccf6c",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 531.57685958339584,
+        "Y": 529.2749218801348
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Requisitos",
+        "Id": "3216729c66ae4340af681d78f4d6d6fe",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -58.376176533784076,
+        "Y": 127.79188633064861
+      }
+    ],
+    "Annotations": [],
+    "X": -131.98816384079726,
+    "Y": 45.918472944137818,
+    "Zoom": 0.73929644681228357
+  }
+}
